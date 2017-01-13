@@ -1,4 +1,4 @@
-/* 
+/*
 Theme Name: Catch Responsive
 Theme URI: https://catchthemes.com/themes/catch-responsive
 Author: Catch Themes
@@ -42,6 +42,32 @@ and Blueprint http://www.blueprintcss.org/
 19. Footer
 20. Extra Elements
 --------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+0. Overriding CCS in HTML templates
+--------------------------------------------------------------*/
+body.custom-background {
+	background-color: #294c60;
+}
+.site-title  a {
+	color: #4d87ad;
+}
+.site-title  a:hover {
+	color: #fff;
+}
+.site-description {
+	color: #fff;
+	font-size: 1.2em;
+}
+body.home.blog.custom-background.two-columns.content-left.excerpt-image-left.mobile-menu-one {
+	/* menu above carosel */
+	color: #4f89ae;
+}
+
+catchresponsive-nav-menu .sub-menu a, .catchresponsive-nav-menu .children a, .sidebar-header-right .widget_nav_menu .sub-menu a {
+	background-color: #fff;
+}
+
 
 /*--------------------------------------------------------------
 1. Reset
