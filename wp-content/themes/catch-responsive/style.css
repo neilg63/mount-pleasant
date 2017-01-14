@@ -341,7 +341,7 @@ big {
 3. Elements
 --------------------------------------------------------------*/
 body {
-	background-color: #294c60;
+	background-color: #294c60 !important;
 }
 
 .site {
@@ -1274,11 +1274,11 @@ textarea {
 }
 
 .site-title a {
-	color: #111111;
+	color: #4d87ad;
 }
 
 .site-title a:hover {
-	color: #1b8be0;
+	color: #fff; /* #1b8be0; */
 	text-decoration: none;
 }
 
@@ -3134,7 +3134,7 @@ Responsive Style
 0. Overriding CCS in HTML templates
 --------------------------------------------------------------*/
 body.custom-background {
-	background-color: #294c60;
+	background-color: #294c60 !important;
 }
 .site-title  a {
 	color: #4d87ad;
