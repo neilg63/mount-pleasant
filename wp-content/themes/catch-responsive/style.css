@@ -82,7 +82,7 @@ html {
 }
 
 body {
-	background: #fff; /* Fallback for when there is no custom background color defined. */
+	background: #294c60 !important; /* Fallback for when there is no custom background color defined. */
 }
 
 article,
@@ -341,7 +341,7 @@ big {
 3. Elements
 --------------------------------------------------------------*/
 body {
-	background-color: #f9f9f9;
+	background-color: #294c60;
 }
 
 .site {
@@ -3134,7 +3134,7 @@ Responsive Style
 0. Overriding CCS in HTML templates
 --------------------------------------------------------------*/
 body.custom-background {
-	background-color: #294c60 !important;
+	background-color: #294c60;
 }
 .site-title  a {
 	color: #4d87ad;
