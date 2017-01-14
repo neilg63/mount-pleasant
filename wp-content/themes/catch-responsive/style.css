@@ -3134,7 +3134,7 @@ Responsive Style
 0. Overriding CCS in HTML templates
 --------------------------------------------------------------*/
 body.custom-background {
-	background-color: #294c60;
+	background-color: #294c60 !important;
 }
 .site-title  a {
 	color: #4d87ad;
