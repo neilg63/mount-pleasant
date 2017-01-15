@@ -3128,8 +3128,6 @@ Responsive Style
  		font-size: 16px;
   	}
 }
-
-
 /*--------------------------------------------------------------
 0. Overriding CCS in HTML templates
 --------------------------------------------------------------*/
@@ -3139,15 +3137,21 @@ body.custom-background { background-image: none; background-color: #294c60 !impo
 .site-header .site-title  a, .site-header a.site-title  { color: #4d87ad; }
 .site-header .site-title  a:hover { color: #1b8be0; }
 .site-header .site-description { color: #fff !important; font-size: 1.2em; }
-/* Header: search box */
+/* Header: search box - background and placeholder text */
 #masthead .search-field,input.search-field {  background-color : #4d87ad; border: 1px solid #4d87ad; }
 ::-webkit-input-placeholder,::-moz-placeholder,:-ms-input-placeholder,:-moz-placeholder { color: white; } 
 /* Menu above carosel */ 
 body.home.blog.custom-background.two-columns.content-left.excerpt-image-left.mobile-menu-one { color: #4f89ae; }
 catchresponsive-nav-menu .sub-menu a, .catchresponsive-nav-menu .children a, .sidebar-header-right .widget_nav_menu .sub-menu a { background-color: #fff; }
 }
-.mobile-menu-anchor a.genericon-menu { color:#4d87ad; }
-.mobile-menu-anchor a.genericon-menu:hover { color:#1b8be0; }
+/* Mobile Header Menu / Hamburger glyph */
+.mobile-menu-anchor a.genericon-menu { color:#4d87ad !important; }
+.mobile-menu-anchor a.genericon-menu:hover { color:#1b8be0 !important; }
+/* Content area */
+#promotion-message h2, featured-content h1 { color: #508bb3 !important; }
+#promotion-message p, featured-content p { color: #000000 !important; }
+/* Button */
+.promotion-button { background-color: #6095b7; color: #FFFFFF; text-transform: capitalize; }
 /*--------------------------------------------------------------
 0. End of Overriding CCS in HTML templates
 --------------------------------------------------------------*/
