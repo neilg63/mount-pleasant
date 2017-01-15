@@ -3134,15 +3134,23 @@ Responsive Style
 0. Overriding CCS in HTML templates
 --------------------------------------------------------------*/
 body.custom-background {
-	background-color: #294c60;
+	background-image: none;
+	background-color: #294c60 !important;
 }
-.site-title  a {
+.mobile-menu-anchor a.genericon-menu {
+	color:#4d87ad;
+}
+.mobile-menu-anchor a.genericon-menu:hover {
+	color:#1b8be0;
+}
+.site-header .site-title  a,
+.site-header a.site-title  {
 	color: #4d87ad;
 }
-.site-title  a:hover {
-	color: #fff;
+.site-header .site-title  a:hover {
+	color: #1b8be0;
 }
-.site-description {
+.site-header .site-description {
 	color: #fff;
 	font-size: 1.2em;
 }
@@ -3154,6 +3162,18 @@ body.home.blog.custom-background.two-columns.content-left.excerpt-image-left.mob
 catchresponsive-nav-menu .sub-menu a, .catchresponsive-nav-menu .children a, .sidebar-header-right .widget_nav_menu .sub-menu a {
 	background-color: #fff;
 }
+/* search box */
+#masthead .search-field,
+input.search-field {
+  background-color : #4d87ad;
+	border: 1px solid #4d87ad;
+}
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+:-moz-placeholder {
+  color: white;
+}  
 
 /*--------------------------------------------------------------
 0. End of Overriding CCS in HTML templates
