@@ -40,13 +40,14 @@ function catchresponsive_primary_menu() {
                 }
                 
                 ?>
+				<?php /*
                 <div id="search-toggle" class="genericon">
                     <a class="screen-reader-text" href="#search-container"><?php _e( 'Search', 'catch-responsive' ); ?></a>
                 </div>
 
                 <div id="search-container" class="displaynone">
                     <?php get_Search_form(); ?>
-                </div>
+                </div> */ ?>
     	</div><!-- .wrapper -->
     </nav><!-- .nav-primary -->
     <?php
