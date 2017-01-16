@@ -160,8 +160,8 @@ if ( ! function_exists( 'catchresponsive_mobile_secondary_nav_anchor' ) ) :
 function catchresponsive_mobile_secondary_nav_anchor() {
     if ( has_nav_menu( 'secondary' ) ) {  
         ?>    
-        <div id="mobile-header-right-menu" class="mobile-menu-anchor secondary-menu">
-            <a href="#mobile-header-right-menu" id="secondary-menu" class="genericon genericon-menu">
+        <div id="mobile-header-right-menu" class="mobile-menu-anchor secondary-menu" style="color:#4d87ad !important;">
+            <a href="#mobile-header-right-menu" id="secondary-menu" class="genericon genericon-menu" style="color:#4d87ad !important;">
                 <span class="mobile-menu-text"><?php _e( 'Menu', 'catch-responsive' );?></span>
             </a>
         </div><!-- #mobile-header-menu -->
