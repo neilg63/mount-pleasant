@@ -3139,7 +3139,7 @@ body.custom-background { background-image: none; background-color: #294c60 !impo
 .mobile-menu-anchor a.genericon-menu { color:#4d87ad !important; }
 .mobile-menu-anchor a.genericon-menu:hover { color:#1b8be0 !important; }
 /* Header */
-.site-header .site-title  a, .site-header a.site-title  { color: #4d87ad; }
+.site-header .site-title  a, .site-header a.site-title  { color: red; }/* #4d87ad; } */
 .site-header .site-title  a:hover { color: #1b8be0; }
 .site-header .site-description { color: #fff !important; font-size: 1.2em; }
 /* Header: search box - background and placeholder text */
