@@ -228,7 +228,7 @@ if ( ! function_exists( 'catchresponsive_site_branding' ) ) :
 		$catchresponsive_header_text = '
 		<div id="site-header">
 			<h1 class="site-title"><a href="' . esc_url( home_url( '/' ) ) . '">' . get_bloginfo( 'name' ) . '</a></h1>
-			<h2 class="site-description">' . get_bloginfo( 'description' ) . '</h2>
+			<h2 class="site-description" style="color: white;">' . get_bloginfo( 'description' ) . '</h2>
 		</div><!-- #site-header -->';
 
 
