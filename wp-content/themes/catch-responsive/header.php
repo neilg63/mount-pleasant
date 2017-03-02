@@ -26,6 +26,19 @@
 	do_action( 'catchresponsive_before_wp_head' );
 
 	wp_head(); ?>
+	
+	<script type="text/javascript">
+    (function() {
+        var path = '//easy.myfonts.net/v2/js?sid=10338(font-family=Avenir+55+Roman)&sid=10340(font-family=Avenir+85+Heavy)&sid=10344(font-family=Avenir+65+Medium)&key=TdlrYO3Pu6',
+            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+            trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = protocol + path;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+	</script>
 </head>
 
 <body <?php body_class(); ?>>

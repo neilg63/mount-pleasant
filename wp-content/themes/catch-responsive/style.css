@@ -3177,8 +3177,22 @@ catchresponsive-nav-menu .sub-menu a,
 .promotion-button { background-color: #6095b7; color: #FFFFFF; text-transform: capitalize; }
 #promotion-message .right .promotion-button  { background-color: #6095b7; color: #FFFFFF; text-transform: capitalize; }
 
+/* Included fonts */
+@font-face {
+    font-family: Avenir_85_Heavy;
+    src: url('fonts/Avenir 85 Heavy.eot'), url('fonts/Avenir 85 Heavy.ttf') format('truetype'), url('fonts/Avenir 85 Heavy.svg') format('svg');
+}
+
+@font-face {
+    font-family: Avenir_55_Roman;
+    src: url('fonts/Avenir 55 Roman.eot'), url('fonts/Avenir 55 Roman.ttf') format('truetype'), url('fonts/Avenir 55 Roman.svg') format('svg');
+}
+@font-face {
+    font-family: Avenir_65_Medium;
+    src: url('fonts/Avenir 65 Medium.eot'), url('fonts/Avenir 65 Medium.ttf') format('truetype'), url('fonts/Avenir 65 Medium.svg') format('svg');
+}
 /* Headings 2017-03-01 */
-h1, h2, h3 { font-family: "Avenir 85 Heavy"; color:#4f89ae; line-height: 30pt; }
+h1, h2, h3 { font-family: Avenir_85_Heavy; color:#4f89ae; line-height: 30pt; }
 h1, h2 { font-size: 24pt; }
 h3 { font-size: 16pt; }
 h1 { text-transform: uppercase; }
@@ -3187,38 +3201,41 @@ h1 { text-transform: uppercase; }
 p { margin: 20pt 0 10pt 0;}
 
 /* Intro/standfirst
-Colour: #383735, Font: Avenir 55 Roman, Size: 18 pt, Leading: 26 pt  */
-
+Colour: #383735, Font: Avenir_55_Roman, Size: 18 pt, Leading: 26 pt  */
+div.entry-content p:first-of-type {
+color:#383735; font-face:Avenir_55_Roman;font-size: 18pt; } /* !!!! Leading: 26 pt  */
+}
 
 /* Body type
-Colour #383735, Font: Avenir 55 Roman, Size: 16 pt, Leading: 20 pt  */
-
+Colour #383735, Font: Avenir_55_Roman, Size: 16 pt, Leading: 20 pt  */
+body { colour:#383735; font-face: Avenir_55_Roman; font-size: 16pt; } /* !!!! Leading: 20 pt  */
 
 /* Bullet list - Numbered list
-Font: Avenir 55 Roman, Size and leading: 16/20, Double space between bullet and list  */
-
+Font: Avenir_55_Roman, Size and leading: 16/20, Double space between bullet and list  */
+ul, ol { font-face:Avenir_55_Roman; font-size: 16pt; } /* !!!! Leading: 20 pt  */
+ul li, ol li { }
 
 /* Block quote
-Indent: 15 pt (or equal to the bullet list double space) , Font: Avenir 65 Medium, Size and leading: 16/20 */
-
+Indent: 15 pt (or equal to the bullet list double space) , Font: Avenir_65_Medium, Size and leading: 16/20 */
+blockquote {  }
 
 /* Table Style
 Frame: 1 px, Colour: #c6c5be */
-
+table { border: 1px solid #c6c5be; } 
 
 /* Header style
-Alignent: left, Colour #383735, Font: Avenir 85 Heavy, Size: 16pt */
+Alignent: left, Colour #383735, Font: Avenir_85_Heavy, Size: 16pt */
 
 
 /* Image and caption
 Image width: 670 px, Caption 15px cap height distance from image, 
 Image caption
-Alignment: left, Font: Avenir 85 Heavy, Size: 12 pt, Tracking: 10 */
+Alignment: left, Font: Avenir_85_Heavy, Size: 12 pt, Tracking: 10 */
 
 
 /* Related posts with image
 Image size: 48 x 48 px (or = half Home page column width of 90 px less gutter of 25 px)
-Font: Avenir 55 Roman, Size and leading: 14/20, Colour: white */
+Font: Avenir_55_Roman, Size and leading: 14/20, Colour: white */
 
 
 /* Body link style/colour
@@ -3227,20 +3244,29 @@ Colour: Black, Underline: 1 px, Distance: 3 px from baseline, Overlay colour: # 
 
 /* Right hand side titles and post links
 Titles
-Font: Avenir 85 Heavy, Colour: # 4f89ae, Size: 16 pt, Leading: 26 pt
+Font: Avenir_85_Heavy, Colour: # 4f89ae, Size: 16 pt, Leading: 26 pt
 Links
-Font: Avenir 55 Roman, Colour: # 383735, Size: 14 pt, Leading: 26 pt */
+Font: Avenir_55_Roman, Colour: # 383735, Size: 14 pt, Leading: 26 pt */
 
 
-/* My priorities would be:
-1. Home page as close as possible including logos on featured content below each summary text, you’ll have to use the same logo for Mount Pleasant Association and Mount Pleasant Association Ltd for now.
-2. Font size set as per the designs
-3. Related posts region in footer one with white background rather than blue  see this page: http://wpdev.platform-3.co.uk/about/ 
-4. Thumbnails on related posts made smaller perhaps 80 x 80 or so as now they are huge 150 x 150 */
+/* Sheila's priorities for Friday 3rd March: */
 
+/* 1. Home page as close as possible including logos (????) on featured content below each summary text, 
+   you’ll have to use the same logo for Mount Pleasant Association and Mount Pleasant Association Ltd for now. */
 
-/*  */
+/* 2. Font size set as per the designs */
 
+/* 3. Related posts region in footer one with white background rather than blue  
+   see this page: http://wpdev.platform-3.co.uk/about/  */
+#widget_crp-2 { background-color: #FFFFFF; }
+
+/* 4. Thumbnails on related posts made smaller perhaps 80 x 80 or so as now they are huge 150 x 150  */
+#widget_crp-2 ul li { display: inline-block; float: left; text-align: left; }
+#widget_crp-2 ul li img { height: 80px; width: 80px; }
+
+footer .copyright { color: #FFFFFF; }
+#site-info {display:none}
+span.credit-link { display: none; }
 
 /*  */
 
