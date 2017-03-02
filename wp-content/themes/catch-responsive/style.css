@@ -1,5 +1,5 @@
 /*
-Theme Name: Catch Responsive
+Theme Name: Catch Responsive 
 Theme URI: https://catchthemes.com/themes/catch-responsive
 Author: Catch Themes
 Author URI: https://catchthemes.com/
@@ -3176,6 +3176,101 @@ catchresponsive-nav-menu .sub-menu a,
 /* Button */
 .promotion-button { background-color: #6095b7; color: #FFFFFF; text-transform: capitalize; }
 #promotion-message .right .promotion-button  { background-color: #6095b7; color: #FFFFFF; text-transform: capitalize; }
+
+/* Headings 2017-03-01 */
+h1, h2, h3 { font-family: "Avenir 85 Heavy"; color:#4f89ae; line-height: 30pt; }
+h1, h2 { font-size: 24pt; }
+h3 { font-size: 16pt; }
+h1 { text-transform: uppercase; }
+
+/*  Space Before 20 pt / Space After paragraph style 10 pt */
+p { margin: 20pt 0 10pt 0;}
+
+/* Intro/standfirst
+Colour: #383735, Font: Avenir 55 Roman, Size: 18 pt, Leading: 26 pt  */
+
+
+/* Body type
+Colour #383735, Font: Avenir 55 Roman, Size: 16 pt, Leading: 20 pt  */
+
+
+/* Bullet list - Numbered list
+Font: Avenir 55 Roman, Size and leading: 16/20, Double space between bullet and list  */
+
+
+/* Block quote
+Indent: 15 pt (or equal to the bullet list double space) , Font: Avenir 65 Medium, Size and leading: 16/20 */
+
+
+/* Table Style
+Frame: 1 px, Colour: #c6c5be */
+
+
+/* Header style
+Alignent: left, Colour #383735, Font: Avenir 85 Heavy, Size: 16pt */
+
+
+/* Image and caption
+Image width: 670 px, Caption 15px cap height distance from image, 
+Image caption
+Alignment: left, Font: Avenir 85 Heavy, Size: 12 pt, Tracking: 10 */
+
+
+/* Related posts with image
+Image size: 48 x 48 px (or = half Home page column width of 90 px less gutter of 25 px)
+Font: Avenir 55 Roman, Size and leading: 14/20, Colour: white */
+
+
+/* Body link style/colour
+Colour: Black, Underline: 1 px, Distance: 3 px from baseline, Overlay colour: # 2a4c61, Opacity: 70% */
+
+
+/* Right hand side titles and post links
+Titles
+Font: Avenir 85 Heavy, Colour: # 4f89ae, Size: 16 pt, Leading: 26 pt
+Links
+Font: Avenir 55 Roman, Colour: # 383735, Size: 14 pt, Leading: 26 pt */
+
+
+/* My priorities would be:
+1. Home page as close as possible including logos on featured content below each summary text, you’ll have to use the same logo for Mount Pleasant Association and Mount Pleasant Association Ltd for now.
+2. Font size set as per the designs
+3. Related posts region in footer one with white background rather than blue  see this page: http://wpdev.platform-3.co.uk/about/ 
+4. Thumbnails on related posts made smaller perhaps 80 x 80 or so as now they are huge 150 x 150 */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
 /*--------------------------------------------------------------
 0. End of Overriding CCS in HTML templates
 --------------------------------------------------------------*/
