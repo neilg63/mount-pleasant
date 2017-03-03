@@ -147,7 +147,7 @@ button,
 input,
 select,
 textarea {
-	color: #404040;
+	/* color: #404040; */
 	font-family: "Open Sans", sans-serif;
 	font-size: 16px;
 	line-height: 1.5;
@@ -358,7 +358,7 @@ a {
 a:hover,
 a:focus,
 a:active {
-	color: #404040;
+	/* color: #404040; */
 	outline: none;
 	text-decoration: underline;
 }
@@ -1102,12 +1102,12 @@ textarea {
 
 .page-links a span {
 	background-color: #f2f2f2;
-	color: #404040;
+	/* color: #404040; */
 }
 
 .page-links span.pages {
 	background-color: transparent;
-	color: #404040;
+	/* color: #404040; */
 	margin-left: 0;
 	padding: 0;
 }
@@ -1119,7 +1119,7 @@ textarea {
 }
 
 #nav-below .wp-pagenavi span.pages {
-	color: #404040;
+	/* /* color: #404040; */ */
 	background-color: transparent;
 	padding: 2px 0 0 0;
 }
@@ -1439,7 +1439,7 @@ textarea {
 /*
 .entry-title,
 .entry-title a {
-	color: #404040;
+	/* color: #404040; */
 }
 
 .entry-title a:hover {
@@ -1821,7 +1821,7 @@ caption {
 
 #breadcrumb-list a:hover,
 #breadcrumb-list a:hover span {
-	color: #404040;
+	/* color: #404040; */
 	text-decoration: none;
 }
 
