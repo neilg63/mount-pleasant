@@ -147,7 +147,7 @@ button,
 input,
 select,
 textarea {
-	/* color: #404040; */
+	color: #508bb3 !important;
 	font-family: "Open Sans", sans-serif;
 	font-size: 16px;
 	line-height: 1.5;
@@ -358,7 +358,7 @@ a {
 a:hover,
 a:focus,
 a:active {
-	/* color: #404040; */
+	color: #508bb3 !important;
 	outline: none;
 	text-decoration: underline;
 }
@@ -1102,12 +1102,12 @@ textarea {
 
 .page-links a span {
 	background-color: #f2f2f2;
-	/* color: #404040; */
+	color: #508bb3 !important;
 }
 
 .page-links span.pages {
 	background-color: transparent;
-	/* color: #404040; */
+	color: #508bb3 !important;
 	margin-left: 0;
 	padding: 0;
 }
@@ -1119,7 +1119,7 @@ textarea {
 }
 
 #nav-below .wp-pagenavi span.pages {
-	/* color: #404040; */
+	color: #508bb3 !important;
 	background-color: transparent;
 	padding: 2px 0 0 0;
 }
@@ -1436,12 +1436,12 @@ textarea {
 .page-header .page-title {
     border-bottom: 1px solid #eee;
 }
-/*
+
 .entry-title,
 .entry-title a {
-	color: #404040; 
+	color:#4f89ae; 
 }
-
+/*
 .entry-title a:hover {
 	color: #1b8be0;
 }*/
@@ -1821,7 +1821,7 @@ caption {
 
 #breadcrumb-list a:hover,
 #breadcrumb-list a:hover span {
-	/* color: #404040; */
+	color: #508bb3 !important;
 	text-decoration: none;
 }
 
