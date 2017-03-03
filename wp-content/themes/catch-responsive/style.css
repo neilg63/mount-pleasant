@@ -3272,7 +3272,7 @@ Font: Avenir 55 Roman, Colour: # 383735, Size: 14 pt, Leading: 26 pt */
 #widget_crp-2 ul li { display: inline-block; float: left; text-align: left; }
 #widget_crp-2 ul li img { height: 80px; width: 80px; }
 
-footer .copyright, footer .copyright a { color: #FFFFFF; text-decoration: none; }
+footer .copyright, footer .copyright a, #site-generator a { color: #FFFFFF; font-weight: normal; }
 #site-info {display:none}
 span.credit-link { display: none; }
 
