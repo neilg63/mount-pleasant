@@ -1119,7 +1119,7 @@ textarea {
 }
 
 #nav-below .wp-pagenavi span.pages {
-	/* /* color: #404040; */ */
+	/* color: #404040; */
 	background-color: transparent;
 	padding: 2px 0 0 0;
 }
@@ -1439,7 +1439,7 @@ textarea {
 /*
 .entry-title,
 .entry-title a {
-	/* color: #404040; */
+	color: #404040; 
 }
 
 .entry-title a:hover {
@@ -3199,10 +3199,10 @@ catchresponsive-nav-menu .sub-menu a,
 @import url(http://fonts.googleapis.com/css?family=Avenir 65 Medium);
 */
 /* Headings 2017-03-01 */
-h1.site-title, h1.entry-title, h1, h2, h3 { font-family: Avenir 85 Heavy; color:#4f89ae; line-height: 30pt; }
-h1, h2 { font-size: 24pt; }
+h1.site-title, h1.entry-title, .entry-title, .entry-title a, h1, h2, h3 { font-family: Avenir 85 Heavy; color:#4f89ae; line-height: 30pt; }
+h1.site-title, h1.entry-title, .entry-title, .entry-title a, h1, h2 { font-size: 24pt; }
 h3 { font-size: 16pt; }
-h1, h1.site-title, h1.entry-title { text-transform: uppercase; }
+h1.site-title, h1.entry-title, .entry-title, .entry-title a, h1 { text-transform: uppercase; }
 
 /*  Space Before 20 pt / Space After paragraph style 10 pt */
 p { margin: 20pt 0 10pt 0;}
