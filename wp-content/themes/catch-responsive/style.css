@@ -3210,9 +3210,8 @@ p { margin: 20pt 0 10pt 0;}
 
 /* Intro/standfirst
 Colour: #383735, Font: Avenir 55 Roman, Size: 18 pt, Leading: 26 pt  */
-div.entry-content p:first-of-type {
-color:#383735; font-family: Muli, Avenir 55 Roman !important; font-size: 18pt; } /* !!!! Leading: 26 pt  */
-}
+div.entry-content p:first-of-type { color:#383735; font-family: Muli, Avenir 55 Roman !important; font-size: 18pt; } /* !!!! Leading: 26 pt  */
+div.entry-summary p { font-family: Muli, Avenir 55 Roman !important; color:black !important; }
 
 /* Body type
 Colour #383735, Font: Avenir 55 Roman, Size: 16 pt, Leading: 20 pt  */
