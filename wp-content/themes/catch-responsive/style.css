@@ -3220,7 +3220,7 @@ body { colour:#383735; font-family: Avenir 55 Roman; font-size: 16pt; } /* !!!! 
 /* Bullet list - Numbered list
 Font: Avenir 55 Roman, Size and leading: 16/20, Double space between bullet and list  */
 ul, ol { font-family:Avenir 55 Roman; font-size: 16pt; } /* !!!! Leading: 20 pt  */
-.entry-content ul > li { list-style-type: none; }
+.entry-content ul > li, .entry-content ul { list-style-type: none; }
 .entry-content ul > li:before {content:"\2022\2003\2003"; }
 
 /* Block quote
@@ -3272,10 +3272,11 @@ Font: Avenir 55 Roman, Colour: # 383735, Size: 14 pt, Leading: 26 pt */
 #widget_crp-2 ul li { display: inline-block; float: left; text-align: left; }
 #widget_crp-2 ul li img { height: 80px; width: 80px; }
 
-footer .copyright { color: #FFFFFF; }
+footer .copyright, footer .copyright a { color: #FFFFFF; text-decoration: none; }
 #site-info {display:none}
 span.credit-link { display: none; }
 
+section.text-3 h4, section.text-3 p { color:#4f89ae; }
 /*  */
 
 
