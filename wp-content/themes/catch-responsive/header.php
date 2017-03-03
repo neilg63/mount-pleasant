@@ -26,7 +26,8 @@
 	do_action( 'catchresponsive_before_wp_head' );
 
 	wp_head(); ?>
-	
+<?php	
+	/**	
 	<script type="text/javascript">
     (function() {
         var path = '//easy.myfonts.net/v2/js?sid=10338(font-family=Avenir+55+Roman)&sid=10340(font-family=Avenir+85+Heavy)&sid=10344(font-family=Avenir+65+Medium)&key=TdlrYO3Pu6',
@@ -38,7 +39,8 @@
         var head = document.getElementsByTagName("head")[0];
         head.appendChild(trial);
     })();
-	</script>
+	</script> */ ?>
+	<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 </head>
 
 <body <?php body_class(); ?>>
