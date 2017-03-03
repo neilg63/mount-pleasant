@@ -1,0 +1,154 @@
+== Change log ==
+
+= 4.0 =
+* Bug Fixed: Sidebar issues in archive and 404 pages
+* Bug Fixed: Responsive logo issue (Reported by karin)
+* Updated: Custom CSS to Additional CSS( Core Support ) for WP version 4.7
+* Code Optimization
+
+= 3.9.3 =
+* Bug Fixed: Fixed style.css issue (Reported by gregfuller )
+** 1491 .no-sidebar.one-column #main {`
+
+= 3.9.2 =
+* Bug Fixed: Sidebar link color
+* Bug Fixed: Slider pager link color
+* Bug Fixed: Content Width issue when changing layout from metabox
+* Bug Fixed: `sprintf() too few arguments` issue on german language
+* Updated: Reset all settings compatibility with WordPress v4.6
+* Updated: Used the_archive_title() and the_archive_description() in archive.php
+* Updated: Lithuanian translation lt_LT.po and lt_LT.mo
+* Updated: German translation de_DE.po and de_DE.mo
+
+= 3.9.1 =
+* Bug Fixed: Optional sidebar widget structure
+* Bug Fixed: Promotional headline title color
+* Bug Fixed: Attribute in breadcrumb
+* Updated: Featured Content Title and Content now takes html data
+* Updated: All instances of http://catchthemes.com changed to https://catchthemes.com
+
+= 3.9 =
+* Added: Ukrainian translation uk.po and uk.mo
+* Bug Fixed: Removed white space issue
+* Bug Fixed: Metabox options name renamed from "Catchresponsive" to "Catch Responsive"
+* Replaced: '|' with '%7c' for accessibility in google font load
+* Updated: Metabox class name
+* Updated: theme tags
+
+= 3.8.1 =
+* Bug Fixed: Genericions issue with To Top plugin
+* Bug Fixed: featured_slide_transition_effect fixed replacing absint with esc_attr ( Reported by hoffmen99 )
+* Updated: Import all theme mod option from free theme when upgrading to pro including menus and widgets
+* Updated: Content Width Implementation
+* Updated: Theme Layout retrieval via function
+* Updated: Favicon and Web Clip Migration to Site Icon( Core Support )
+* Updated: Logo to Custom Logo( Core Support ) for WP version 4.5
+
+= 3.8 =
+* Added: Polish translation pl_PL.po and pl_PL.mo
+* Updated: Sidr menu script to version 2.1.1.1
+* Updated: Meta viewport for better responsive support
+
+= 3.7 =
+* Added: Russian translation ru_RU.po and ru_RU.mo
+* Added: Option to change Dark/Light mobile menu in Color Options panel
+* Updated: Sidr menu script to version 2.1.0
+* Updated: html5 script to version 3.7.3
+* Removed: HTML script loading from catchresponsive_head() function and added it as wp_enqueue_script() in catchresponsive_scripts() function
+
+= 3.6 =
+* Added: CT: Advertisement Widget - "Check to Hide Ad on 404 page" option (more info in readme)
+* Added: Social Icons for Phone, Handset, Cart, Cloud, Link( Custom Link )
+* Added: Feature Slider Loop. Now it is possible to control the number of times an auto-advancing slideshow should loop before terminating.
+* Bug Fixed: Customizer Issues on select types
+* Bug Fixed: Migration from free to pro now migrates even WordPress Core Options like Header Image, Widgets, Background, etc
+* Bug Fixed: Custom Social Icon Link not saving due to sanitization issues
+* Bug Fixed: Custom Header Image Position After Slider not working
+* Enhanced: Used antispambot() function on emails output on social icons
+* Enhanced: Some html data( wp_kses_post ) allowed in Featured Image Slider Content
+* Tweaked: Feature slider transition delay and length are now number type in customizer
+* Updated: Genericons to 3.4.1
+* Updated: Jetpack Scroll Pagination Option to enable infinite scroll in Reading Settings
+
+= 3.5.1 =
+* Bug Fixed: Featured Slider Transition Effect Not Updating
+* Bug Fixed: Text domain in style.css
+
+= 3.5 =
+* Added: Spanish translation es_ES.po and es_ES.mo
+* Updated responsive menu js (jquery.sidr.js)
+
+= 3.4 =
+* Bug Fixed: Breadcrumb css issue in IE 11 ( Reported by Mark )
+* Removed panel for featured content and featured slider for WordPress version greater than 4.2
+* Removed Custom Textarea control for customizer
+* Updated Customizer active callback scripts (previously handled by jQuery)
+* Updated Customizer Color Scheme Script for changing values of colors on change of color scheme
+
+= 3.3 =
+* Bug Fixed: German language file
+* Bug Fixed: Default page menu responsive css ( Reported by John Bianchi )
+* Bug Fixed: Translation Issues for Customizer ( Reported by Daniel and Felix )
+
+= 3.2 =
+* Bug Fixed: Promotion Headline button background and text color not working ( Reported by John Bianchi )
+* Bug Fixed: Changed esc_attr_e to echo esc_attr in searchform.php
+* Compatible with WordPress 4.3
+* Removed support for WordPress version less than 4.1
+* Updated codes to comply with deprecating PHP4 style constructors in WordPress 4.3
+* Updated text-domain
+
+= 3.1 =
+* Added: Brazilian Portuguese translation pt_BR.po and pt_BR.mo
+* Added: German translation de_DE.po and de_DE.mo
+* Added: Missing keywords esc_attr_x in .pot file
+* Bug Fixed: Custom social icon height and width
+* Bug Fixed: "Warning: Creating default object from empty value" (Reported by cindy)
+* Optimized: Customizer custom script for color scheme
+* Updated: French translation fr_FR.po and fr_FR.mo
+* Updated: Codes to comply with deprecating PHP4 style constructors in WordPress 4.3
+
+= 3.0 =
+* Added: Support for WooCommerce Plugin
+* Added: WooCommerce Primary Sidebar widget areas
+* Added: Support for WPML, Polylang, qTranslate X, mqTranslate and qTranslate Plugins
+* Added: Support for Random Header Image
+* Added: 2 columns option in Featured Content Layout
+* Added: Display Content Options as: Excerpt, Full Content, Hide in Featured Content Options
+* Added: Display Content Options as: Excerpt, Full Content, Hide in Page and Post widgets
+* Added: Content Character Limit for Excerpt Only in Page and Post widgets
+* Added: Single Post Navigation Option
+* Bug Fixed: Removal of extra '/' in sub-categories in breadcrumb and updates in breadcrumb
+* Bug Fixed: Blog page featured image not overwriting default header image
+* Bug Fixed: Featured Content Layout issue in No Sidebar (One Column) layout
+* Changed Default Featured Content Number to 3
+* Combined options for Featured Content and renamed the section From Featured Content Options to Featured Content in Customizer
+* Combined options for Featured Slider and renamed the section From Featured Slider Options to Featured Slider in Customizer
+* Removed unnecessary js from custom customizer js as support for WordPress versions less than 4.0 is not required
+* Replaced: Custom widgets title from Catch responsive to CR:
+* Updated: Sidr scripts to latest version 1.2.1
+
+= 2.1 =
+* Bug Fixed: Add missing paragraph tag in Slider and Featured Content
+* Bug Fixed: Color Options not working for Default page menu
+* Bug Fixed: Header Color options showing blank in custom css when disabling site title and tagline
+* Bug Fixed: Metabox Options not saving properly
+* Bug Fixed: Single page/post image size issue
+* Bug Fixed: Fixed Slider height overlap issue. Added Image Loader option on Featured Slider that specifies image-loading support
+* Bug Fixed: Custom social icons css
+
+= 2.0 =
+* Added French translation fr_FR.po and fr_FR.mo
+* Bug Fixed: Content Layout issue with content width
+* Bug Fixed: Added jquery.cycle2.js.map ( Reported by tualatinweb )
+* Bug Fixed: Image Slider open link in new tab
+* Bug Fixed: Sidebar layout option
+* Bug Fixed: Featured content issues
+** Added missing link in title of Post, Page and Category
+** Featured category content not showing title and excerpt
+** Featured Post Content not showing title
+** Remove extra link below the content
+* Removed irrelevant function catchresponsive_layout_condition_check() in catchresponsive-structure.php
+
+= 1.0 =
+* Initial Release

@@ -1,0 +1,16 @@
+Hook-name -> location
+catchresponsive_before 				-> header.php (before tag header #masthead)
+catchresponsive_before_site_branding -> header.php (before tag div .site-branding)
+catchresponsive_site_branding 		-> header.php (inside tag div .site-branding)
+catchresponsive_after_site_branding	-> header.php (after tag div .site-branding)
+catchresponsive_after_menu			-> header.php (after tag div .wrapper)
+catchresponsive_after_header			-> header.php (after tag header #masthead)
+catchresponsive_before_content		-> header.php (before tag header #content)
+catchresponsive_before_content		-> header.php (inside tag div .wrapper)
+
+catchresponsive_breadcrumb			-> before tag main #main
+
+catchresponsive_before_entry_content -> before tag div .entry-content
+
+catchresponsive_footer_above_siteinfo-> footer.php ( before tag div .site-info)
+catchresponsive_credits 				-> footer.php ( inside tag div .site-info)

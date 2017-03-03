@@ -17,6 +17,7 @@
      * @hooked catchresponsive_featured_content_display (move featured content below homepage posts) - 40 
      *
      */
+    //echo ">>>";
     do_action( 'catchresponsive_after_content' ); 
 ?>
             
@@ -31,10 +32,12 @@
      * @hooked catchresponsive_page_end - 200
      *
      */
+    //echo "???";
     do_action( 'catchresponsive_footer' );
 ?>
 
-<?php               
+<?php  
+//echo "###0";             
 /** 
  * catchresponsive_after hook
  *
@@ -42,8 +45,10 @@
  * @hooked catchresponsive_mobile_menus- 20
  *
  */
-do_action( 'catchresponsive_after' );?>
-
+//echo "###1";
+do_action( 'catchresponsive_after' );
+//echo "###2";
+?>
 <?php wp_footer(); ?>
 
 </body>
