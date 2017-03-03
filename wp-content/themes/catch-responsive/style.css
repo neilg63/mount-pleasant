@@ -1436,7 +1436,7 @@ textarea {
 .page-header .page-title {
     border-bottom: 1px solid #eee;
 }
-
+/*
 .entry-title,
 .entry-title a {
 	color: #404040;
@@ -1444,7 +1444,7 @@ textarea {
 
 .entry-title a:hover {
 	color: #1b8be0;
-}
+}*/
 
 .entry-title a:hover,
 .entry-meta a:hover {
@@ -1955,7 +1955,7 @@ caption {
     width: 60%;
     z-index: 101;
 }
-
+/*
 #feature-slider .entry-container,
 #feature-slider .entry-title,
 #feature-slider .entry-title a {
@@ -1964,7 +1964,7 @@ caption {
 
 #feature-slider .entry-content a:hover {
 	color: #eee;
-}
+}*/
 
 .disabled {
     opacity: .5;
