@@ -323,6 +323,7 @@ big {
 
 #site-generator {
     font-size: 13px;
+
 }
 
 .widget_calendar #wp-calendar caption {
@@ -350,7 +351,7 @@ body {
 }
 
 a {
-	color: #1b8be0;
+	color: #4f89ae;
 	cursor: pointer;
     text-decoration: none;
 }
@@ -597,7 +598,7 @@ blockquote:before {
 	padding: 20px 20px 0 20px;
 }
 
-.site-description,
+
 #featured-content p {
 	margin-bottom: 0;
 	color: black !important;
@@ -665,8 +666,9 @@ blockquote:before {
 
 #featured-content .featured-heading-wrap {
 	padding: 20px 20px 0;
-	text-align: center;
+	text-align: left;
 }
+/* changed above from centre to left*/
 
 #feature-heading {
     margin: 0 20px;
@@ -1734,7 +1736,7 @@ caption {
 #site-generator {
     border-top: 1px solid #f4f4f4;
     color: #666;
-    text-align: center;
+    text-align: left;
 }
 
 #site-generator a {
@@ -3165,15 +3167,28 @@ catchresponsive-nav-menu .sub-menu a,
 .wrapper ul.menu-main-menu  li:hover {  }
 
 /* Carosel controls */
-#feature-slider .entry-container { width: auto; }
+#feature-slider .entry-container { width: 100%; left:0%;}
 #feature-slider .cycle-prev, #feature-slider .cycle-next { color: #eee; opacity: 0; }
 #feature-slider .cycle-prev { left: -20px; }
 #feature-slider .cycle-next { right: -20px; }
 #feature-slider .cycle-pager, #feature-slider .cycle-pager span { display: none; opacity: 0; }
 
+/* Carousel text */
+#feature-slider .entry-content p {color: #FFFFFF;}
+#feature-slider .entry-content p,h1 {text-align: left}
+
+/* Featured content text */
+#featured-content .featured-heading-wrap p {margin: 0 20px 20px 0;}
+#promotion-message {border-bottom: 2px solid #4f89ae;}
+#featured-content .entry-title h1 {font-size 16pt; line-height: 20pt;}
+
+/* borders */
+.archive-post-wrap, .page-header .page-title {border-bottom: 2px solid #4f89ae;}
+#featured-content {border-bottom: 2px solid #4f89ae;}
+
 /* Content area */
 #promotion-message h2, featured-content h1 { color: #508bb3 !important; }
-#promotion-message p, featured-content p { color: #000000 !important; }
+#promotion-message p, featured-content p { color: #000000 !important; margin: 0px; }
 /* Button */
 .promotion-button { background-color: #6095b7; color: #FFFFFF; text-transform: capitalize; }
 #promotion-message .right .promotion-button  { background-color: #6095b7; color: #FFFFFF; text-transform: capitalize; }
@@ -3203,7 +3218,7 @@ catchresponsive-nav-menu .sub-menu a,
 h1.site-title, h1.entry-title, .entry-title, .entry-title a, h1, h2, h3 { font-family: Muli, Avenir 85 Heavy !important;  color:#4f89ae; line-height: 30pt; }
 h1.site-title, h1.entry-title, .entry-title, .entry-title a, h1, h2 { font-size: 24pt; }
 h3 { font-size: 16pt; }
-h1.site-title, h1.entry-title, .entry-title, .entry-title a, h1 { text-transform: uppercase; }
+/*h1.site-title, h1.entry-title, .entry-title, .entry-title a, h1 { text-transform: uppercase; }*/
 
 /*  Space Before 20 pt / Space After paragraph style 10 pt */
 p { margin: 20pt 0 10pt 0;}
