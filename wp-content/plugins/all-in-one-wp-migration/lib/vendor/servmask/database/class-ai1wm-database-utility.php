@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2014-2016 ServMask Inc.
+ * Copyright (C) 2014-2017 ServMask Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -87,6 +87,20 @@ class Ai1wm_Database_Utility {
 		}
 
 		return $data;
+	}
+
+	/**
+	 * Escape MySQL special characters
+	 *
+	 * @param  string $data Data to replace.
+	 * @return string
+	 */
+	public static function escape_mysql( $data ) {
+		return str_ireplace(
+			array( '\\', '\0', "\n", "\r", "\x1a", "'", '"', "\0" ),
+			array( '\\\\', '\\0', "\\n", "\\r", '\Z', "\'", '\"', '\0' ),
+			$data
+		);
 	}
 
 	/**

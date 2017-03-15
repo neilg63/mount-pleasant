@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2014-2016 ServMask Inc.
+ * Copyright (C) 2014-2017 ServMask Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -432,6 +432,9 @@ class Ai1wm_Import_Database {
 				$client->flush();
 			}
 		}
+
+		// Set Visual Composer
+		$client->set_visual_composer( ! is_wp_error( validate_plugin( 'js_composer/js_composer.php' ) ) );
 
 		// Import database
 		$client->import( ai1wm_database_path( $params ) );
