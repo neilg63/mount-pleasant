@@ -308,10 +308,12 @@ big {
 .sidebar-header-right .widget_nav_menu .sub-menu a,
 #breadcrumb-list .wrapper,
 .entry-meta,
-.site-description,
 #secondary .widget-area,
 #colophon .widget-area {
 	font-size: 14px;
+}
+h2.site-description {
+	font-size: 1.2em  !important; 
 }
 
 #nav-below .wp-pagenavi a,
@@ -597,7 +599,7 @@ blockquote:before {
 	padding: 20px 20px 0 20px;
 }
 
-.site-description,
+/*.site-description,*/
 #featured-content p {
 	margin-bottom: 0;
 	color: black !important;
@@ -3034,11 +3036,11 @@ Responsive Style
 	#promotion-message .right {
 		padding-top: 0;
 	}
-
-	.entry-meta,
-	.site-description {
+/*  .site-description  */
+	.entry-meta {
 	    font-size: 12px;
 	}
+	h2.site-description { font-size: 1.2em !important; }
 
 	#site-generator {
 		font-size: 11px;
@@ -3143,7 +3145,7 @@ body.custom-background { background-image: none; background-color: #294c60 !impo
 /* Header */
 .site-header .site-title  a, .site-header a.site-title  { color: #4d87ad; text-decoration: none; }
 .site-header .site-title  a:hover { color: #1b8be0; }
-.site-header .site-description { color: #fff !important; font-size: 1.2em  !important; }
+.site-header .site-description, h2.site-description  { color: #fff !important; font-size: 1.2em  !important; }
 /* Header: search box - background and placeholder text */
 #masthead .search-field,input.search-field {  background-color : #4d87ad; border: 1px solid #4d87ad; border-radius: 0; }
 #masthead .search-field { box-shadow: none; -webkit-box-shadow: none; }
@@ -3317,7 +3319,7 @@ section.text-3 h4, section.text-3 p { color:#4f89ae; }
 /*  */
 
 
-/*  */
+/* Test 108 */
 
 /*--------------------------------------------------------------
 0. End of Overriding CCS in HTML templates
