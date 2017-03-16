@@ -3135,7 +3135,7 @@ Responsive Style
   	}
 }
 /*--------------------------------------------------------------
-0. Overriding CCS in HTML templates
+0. Overriding CSS in HTML templates
 --------------------------------------------------------------*/
 /* Background color */
 body.custom-background { background-image: none; background-color: #294c60 !important; }
@@ -3322,5 +3322,5 @@ section.text-3 h4, section.text-3 p { color:#4f89ae; }
 /* Test 108 */
 
 /*--------------------------------------------------------------
-0. End of Overriding CCS in HTML templates
+0. End of Overriding CSS in HTML templates
 --------------------------------------------------------------*/
