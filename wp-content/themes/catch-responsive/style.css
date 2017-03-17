@@ -2003,12 +2003,12 @@ caption {
 
 
 .site .widget_catchresponsive_social_icons a.genericon:hover {
-	background-color: #1b8be0 !important;
+	background-color: #4f89ae !important;
 	border-color: #000;
     color: #fff;
     text-decoration: none;
 }
-
+/*
 .site .widget_catchresponsive_social_icons a.genericon-facebook-alt:hover {
 	background-color: #3b5998;
 	border-color: #3b5998;
@@ -2149,7 +2149,7 @@ caption {
 	background: transparent;
 	padding: 0;
 }
-
+*/
 
 /*--------------------------------------------------------------
 Responsive Style
@@ -3184,25 +3184,26 @@ catchresponsive-nav-menu .sub-menu a,
 #promotion-message {border-bottom: 2px solid #4f89ae;}
 #featured-content .entry-title h1 {font-size 16pt; line-height: 20pt;}
 
-/* borders */
+/* borders - section separators */
 .archive-post-wrap, .page-header .page-title {border-bottom: 2px solid #4f89ae;}
-/* section#featured-content {border-bottom: 2px solid #4f89ae;} */
 #promotion-message,
 section#featured-content:before { border: none; }
 #promotion-message:after,
 section#featured-content:after {
 	content:""; position: absolute; 
-	left:14%; right:0; height: 2px; width:72%; border-bottom: 2px solid #4f89ae;
-}
-
+	left:13.5%; right:0; height: 2px; width:72%; border-bottom: 2px solid #4f89ae; }
+	
 /* Content area */
 #promotion-message h2, featured-content h1 { color: #508bb3 !important; }
 #promotion-message p, featured-content p { color: #000000 !important; margin: 0px; }
+
+article.post h1.entry-title a {  font-size: 22pt; }
 /* Button */
 .promotion-button { background-color: #6095b7; color: #FFFFFF; text-transform: capitalize; }
 #promotion-message .right .promotion-button  { background-color: #6095b7; color: #FFFFFF; text-transform: capitalize; }
 #promotion-message .right .promotion-button:hover  { color: #FFFFFF; }
 .widget ul li.widget ul li a { color: #000000; }
+
 /* Included fonts */
 /*
 @font-face {
