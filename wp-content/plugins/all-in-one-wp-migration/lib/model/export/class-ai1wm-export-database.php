@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2014-2016 ServMask Inc.
+ * Copyright (C) 2014-2017 ServMask Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -113,6 +113,9 @@ class Ai1wm_Export_Database {
 
 		// Exclude active plugins and status options
 		$client->set_table_query_clauses( ai1wm_table_prefix() . 'options', sprintf( " WHERE option_name NOT IN ('%s', '%s') ", AI1WM_ACTIVE_PLUGINS, AI1WM_STATUS ) );
+
+		// Set Visual Composer
+		$client->set_visual_composer( ! is_wp_error( validate_plugin( 'js_composer/js_composer.php' ) ) );
 
 		// Set current table index
 		if ( isset( $params['current_table_index'] ) ) {

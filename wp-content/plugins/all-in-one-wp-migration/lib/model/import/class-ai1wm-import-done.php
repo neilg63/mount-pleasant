@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2014-2016 ServMask Inc.
+ * Copyright (C) 2014-2017 ServMask Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,7 +45,11 @@ class Ai1wm_Import_Done {
 
 			// Activate sitewide plugins
 			if ( isset( $multisite['Plugins'] ) && ( $plugins = $multisite['Plugins'] ) ) {
+				// Activate sitewide plugins
 				ai1wm_activate_plugins( $plugins );
+
+				// Disable Jetpack Photon module
+				ai1wm_disable_jetpack_photon();
 			}
 		} else {
 
@@ -64,7 +68,11 @@ class Ai1wm_Import_Done {
 
 				// Activate plugins
 				if ( isset( $package['Plugins'] ) && ( $plugins = $package['Plugins'] ) ) {
+					// Activate plugins
 					ai1wm_activate_plugins( $plugins );
+
+					// Disable Jetpack Photon module
+					ai1wm_disable_jetpack_photon();
 				}
 			}
 		}
@@ -85,7 +93,11 @@ class Ai1wm_Import_Done {
 			// Activate plugins
 			foreach ( $blogs as $blog ) {
 				if ( isset( $blog['New']['Plugins'] ) && ( $plugins = $blog['New']['Plugins'] ) ) {
+					// Activate plugins
 					ai1wm_activate_plugins( $plugins );
+
+					// Disable Jetpack Photon module
+					ai1wm_disable_jetpack_photon();
 				}
 			}
 		}
