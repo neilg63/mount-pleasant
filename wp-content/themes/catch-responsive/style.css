@@ -731,11 +731,11 @@ p,
 blockquote {
 	margin: 20px 40px;
 }
-
+/*
 .site-description {
 	margin-left: 5px;
 }
-
+*/
 
 /*--------------------------------------------------------------
 5. Forms
@@ -1357,7 +1357,7 @@ textarea {
 
 #promotion-message .right .promotion-button:hover {
 	border-color: #666;
-	color: #000;
+	color: #FFFFFF;
 	text-decoration: none;
 }
 
@@ -2003,7 +2003,7 @@ caption {
 
 
 .site .widget_catchresponsive_social_icons a.genericon:hover {
-	background-color: #000;
+	background-color: #1b8be0 !important;
 	border-color: #000;
     color: #fff;
     text-decoration: none;
@@ -3194,7 +3194,8 @@ catchresponsive-nav-menu .sub-menu a,
 /* Button */
 .promotion-button { background-color: #6095b7; color: #FFFFFF; text-transform: capitalize; }
 #promotion-message .right .promotion-button  { background-color: #6095b7; color: #FFFFFF; text-transform: capitalize; }
-
+#promotion-message .right .promotion-button:hover  { color: #FFFFFF; }
+.widget ul li.widget ul li a { color: #000000; }
 /* Included fonts */
 /*
 @font-face {
@@ -3220,6 +3221,7 @@ catchresponsive-nav-menu .sub-menu a,
 h1.site-title, h1.entry-title, .entry-title, .entry-title a, h1, h2, h3 { font-family: Muli, Avenir 85 Heavy !important;  color:#4f89ae; line-height: 30pt; }
 h1.site-title, h1.entry-title, .entry-title, .entry-title a, h1, h2 { font-size: 24pt; }
 h3 { font-size: 16pt; }
+#masthead #site-branding { 	padding: 20px 0; }
 /*h1.site-title, h1.entry-title, .entry-title, .entry-title a, h1 { text-transform: uppercase; }*/
 
 /*  Space Before 20 pt / Space After paragraph style 10 pt */
@@ -3325,6 +3327,6 @@ section.text-3 h4, section.text-3 p { color:#4f89ae; }
 /* Test 108 */
 
 /*--------------------------------------------------------------
+			
 0. End of Overriding CSS in HTML templates
 --------------------------------------------------------------*/
-
