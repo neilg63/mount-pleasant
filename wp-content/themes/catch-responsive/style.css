@@ -1367,7 +1367,6 @@ textarea {
 --------------------------------------------------------------*/
 #featured-content {
 	background-color: #fff;
-	border-bottom: 1px solid #eee;
 }
 
 #featured-content.border-top {
@@ -3187,7 +3186,14 @@ catchresponsive-nav-menu .sub-menu a,
 
 /* borders */
 .archive-post-wrap, .page-header .page-title {border-bottom: 2px solid #4f89ae;}
-#featured-content {border-bottom: 2px solid #4f89ae;}
+/* section#featured-content {border-bottom: 2px solid #4f89ae;} */
+#promotion-message,
+section#featured-content:before { border: none; }
+#promotion-message:after,
+section#featured-content:after {
+	content:""; position: absolute; 
+	left:14%; right:0; height: 2px; width:72%; border-bottom: 2px solid #4f89ae;
+}
 
 /* Content area */
 #promotion-message h2, featured-content h1 { color: #508bb3 !important; }
