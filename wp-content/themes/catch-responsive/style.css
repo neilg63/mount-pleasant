@@ -601,6 +601,7 @@ blockquote:before {
 }
 
 /*.site-description,*/
+#featured-content .entry-content,
 #featured-content p {
 	margin-bottom: 0;
 	color: black !important;
@@ -3298,11 +3299,15 @@ span.credit-link { display: none; }
 
 section.text-3 h4, section.text-3 p { color:#4f89ae; }
 /*  */
-
-
+.widget_recent_comments ul li a,
+.widget_recent_entries ul li a,
+.widget_archive ul li a,
+.widget_categories ul li a,
+.widget_meta ul li a { color: #000000 !important; }
 /*  */
-
-
+.featured-page-content h1.entry-title, 
+.featured-content-wrap h1.entry-title,
+.featured-content h1.entry-title { line-height: 24pt !important; font-size: 19pt !important; }
 /*  */
 
 
