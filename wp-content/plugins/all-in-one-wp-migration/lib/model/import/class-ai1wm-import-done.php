@@ -27,12 +27,8 @@ class Ai1wm_Import_Done {
 
 	public static function execute( $params ) {
 
-		// Set shutdown handler
-		@register_shutdown_function( 'Ai1wm_Import_Done::shutdown' );
-
 		// Check multisite.json file
 		if ( true === is_file( ai1wm_multisite_path( $params ) ) ) {
-
 			// Read multisite.json file
 			$handle = ai1wm_open( ai1wm_multisite_path( $params ), 'r' );
 
@@ -45,14 +41,9 @@ class Ai1wm_Import_Done {
 
 			// Activate sitewide plugins
 			if ( isset( $multisite['Plugins'] ) && ( $plugins = $multisite['Plugins'] ) ) {
-				// Activate sitewide plugins
 				ai1wm_activate_plugins( $plugins );
-
-				// Disable Jetpack Photon module
-				ai1wm_disable_jetpack_photon();
 			}
 		} else {
-
 			// Check package.json file
 			if ( true === is_file( ai1wm_package_path( $params ) ) ) {
 
@@ -68,18 +59,26 @@ class Ai1wm_Import_Done {
 
 				// Activate plugins
 				if ( isset( $package['Plugins'] ) && ( $plugins = $package['Plugins'] ) ) {
-					// Activate plugins
 					ai1wm_activate_plugins( $plugins );
-
-					// Disable Jetpack Photon module
-					ai1wm_disable_jetpack_photon();
 				}
+
+				// Activate template
+				if ( isset( $package['Template'] ) && ( $template = $package['Template'] ) ) {
+					ai1wm_activate_template( $template );
+				}
+
+				// Activate stylesheet
+				if ( isset( $package['Stylesheet'] ) && ( $stylesheet = $package['Stylesheet'] ) ) {
+					ai1wm_activate_stylesheet( $stylesheet );
+				}
+
+				// Disable Jetpack Photon module
+				ai1wm_disable_jetpack_photon();
 			}
 		}
 
 		// Check blogs.json file
 		if ( true === is_file( ai1wm_blogs_path( $params ) ) ) {
-
 			// Read blogs.json file
 			$handle = ai1wm_open( ai1wm_blogs_path( $params ), 'r' );
 
@@ -90,22 +89,28 @@ class Ai1wm_Import_Done {
 			// Close handle
 			ai1wm_close( $handle );
 
-			// Activate plugins
+			// Loop over blogs
 			foreach ( $blogs as $blog ) {
-				if ( isset( $blog['New']['Plugins'] ) && ( $plugins = $blog['New']['Plugins'] ) ) {
-					// Activate plugins
-					ai1wm_activate_plugins( $plugins );
 
-					// Disable Jetpack Photon module
-					ai1wm_disable_jetpack_photon();
+				// Activate plugins
+				if ( isset( $blog['New']['Plugins'] ) && ( $plugins = $blog['New']['Plugins'] ) ) {
+					ai1wm_activate_plugins( $plugins );
 				}
+
+				// Activate template
+				if ( isset( $blog['New']['Template'] ) && ( $template = $blog['New']['Template'] ) ) {
+					ai1wm_activate_template( $template );
+				}
+
+				// Activate stylesheet
+				if ( isset( $blog['New']['Stylesheet'] ) && ( $stylesheet = $blog['New']['Stylesheet'] ) ) {
+					ai1wm_activate_stylesheet( $stylesheet );
+				}
+
+				// Disable Jetpack Photon module
+				ai1wm_disable_jetpack_photon();
 			}
 		}
-
-		return $params;
-	}
-
-	public static function shutdown() {
 
 		// Set progress
 		Ai1wm_Status::done(
@@ -123,5 +128,7 @@ class Ai1wm_Import_Done {
 				AI1WM_PLUGIN_NAME
 			)
 		);
+
+		return $params;
 	}
 }

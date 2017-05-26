@@ -27,12 +27,9 @@ class Ai1wm_Resolve_Controller {
 
 	public static function resolve( $params = array() ) {
 
-		// Set error handler
-		@set_error_handler( 'Ai1wm_Handler::error' );
-
 		// Set params
 		if ( empty( $params ) ) {
-			$params = ai1wm_urldecode( $_REQUEST );
+			$params = stripslashes_deep( $_REQUEST );
 		}
 
 		// Set secret key
@@ -41,12 +38,11 @@ class Ai1wm_Resolve_Controller {
 			$secret_key = $params['secret_key'];
 		}
 
-		// Verify secret key by using the value in the database, not in cache
-		if ( $secret_key !== get_option( AI1WM_SECRET_KEY ) ) {
-			Ai1wm_Status::error(
-				sprintf( __( 'Unable to authenticate your request with secret_key = "%s"', AI1WM_PLUGIN_NAME ), $secret_key ),
-				__( 'Unable to resolve', AI1WM_PLUGIN_NAME )
-			);
+		try {
+			// Ensure that unauthorized people cannot access resolve action
+			ai1wm_verify_secret_key( $secret_key );
+		} catch ( Ai1wm_Not_Valid_Secret_Key_Exception $e ) {
+			Ai1wm_Log::error( $e->getMessage() );
 			exit;
 		}
 

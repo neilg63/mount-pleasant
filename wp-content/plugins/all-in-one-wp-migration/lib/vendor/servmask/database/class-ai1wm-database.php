@@ -105,12 +105,12 @@ abstract class Ai1wm_Database {
 	protected $exclude_table_prefixes = array();
 
 	/**
-	 * Number of serialized replaces
+	 * List all tables that should not be affected by the timeout of the current request
 	 *
 	 * @access protected
-	 * @var int
+	 * @var array
 	 */
-	protected $number_of_replaces = 0;
+	protected $atomic_tables = array();
 
 	/**
 	 * Visual Composer
@@ -229,6 +229,48 @@ abstract class Ai1wm_Database {
 	}
 
 	/**
+	 * Set old replace raw values
+	 *
+	 * @param  array $values List of values
+	 * @return Ai1wm_Database
+	 */
+	public function set_old_replace_raw_values( $values ) {
+		$this->old_replace_raw_values = $values;
+
+		return $this;
+	}
+
+	/**
+	 * Get old replace raw values
+	 *
+	 * @return array
+	 */
+	public function get_old_replace_raw_values() {
+		return $this->old_replace_raw_values;
+	}
+
+	/**
+	 * Set new replace raw values
+	 *
+	 * @param  array $values List of values
+	 * @return Ai1wm_Database
+	 */
+	public function set_new_replace_raw_values( $values ) {
+		$this->new_replace_raw_values = $values;
+
+		return $this;
+	}
+
+	/**
+	 * Get new replace raw values
+	 *
+	 * @return array
+	 */
+	public function get_new_replace_raw_values() {
+		return $this->new_replace_raw_values;
+	}
+
+	/**
 	 * Set table query clauses
 	 *
 	 * @param  string $table   Table name
@@ -323,6 +365,27 @@ abstract class Ai1wm_Database {
 	}
 
 	/**
+	 * Set atomic tables
+	 *
+	 * @param  array $tables List of tables
+	 * @return Ai1wm_Database
+	 */
+	public function set_atomic_tables( $tables ) {
+		$this->atomic_tables = $tables;
+
+		return $this;
+	}
+
+	/**
+	 * Get atomic tables
+	 *
+	 * @return array
+	 */
+	public function get_atomic_tables() {
+		return $this->atomic_tables;
+	}
+
+	/**
 	 * Set Visual Composer
 	 *
 	 * @param  bool $active Is Visual Composer Active?
@@ -405,17 +468,17 @@ abstract class Ai1wm_Database {
 	/**
 	 * Export database into a file
 	 *
-	 * @param  string $file_name            Name of file
-	 * @param  string $current_table_index  Current table index
-	 * @param  int    $timeout              Process timeout
+	 * @param  string $file_name    Name of file
+	 * @param  string $table_offset Table offset
+	 * @param  int    $timeout      Process timeout
 	 * @return bool
 	 */
-	public function export( $file_name, &$current_table_index = 0, $timeout = 0 ) {
+	public function export( $file_name, &$table_offset = 0, $timeout = 0 ) {
 		// Set file handler
 		$file_handler = ai1wm_open( $file_name, 'ab' );
 
 		// Write headers
-		if ( $current_table_index === 0 ) {
+		if ( $table_offset === 0 ) {
 			ai1wm_write( $file_handler, $this->get_header() );
 		}
 
@@ -429,16 +492,16 @@ abstract class Ai1wm_Database {
 		$tables = $this->get_tables();
 
 		// Export tables
-		for ( ; $current_table_index < count( $tables ); ) {
+		for ( ; $table_offset < count( $tables ); ) {
 
 			// Get table name
-			$table_name = $tables[ $current_table_index ];
+			$table_name = $tables[ $table_offset ];
 
 			// Replace table name prefixes
 			$new_table_name = $this->replace_table_prefixes( $table_name, 0 );
 
 			// Get table structure
-			$structure = $this->query( "SHOW CREATE TABLE `$table_name`" );
+			$structure = $this->query( "SHOW CREATE TABLE `{$table_name}`" );
 			$table = $this->fetch_assoc( $structure );
 
 			// Close structure cursor
@@ -448,7 +511,7 @@ abstract class Ai1wm_Database {
 			if ( isset( $table['Create Table'] ) ) {
 
 				// Write table drop statement
-				$drop_table = "\nDROP TABLE IF EXISTS `$new_table_name`;\n";
+				$drop_table = "\nDROP TABLE IF EXISTS `{$new_table_name}`;\n";
 
 				// Write table statement
 				ai1wm_write( $file_handler, $drop_table );
@@ -469,10 +532,10 @@ abstract class Ai1wm_Database {
 				ai1wm_write( $file_handler, ";\n\n" );
 			}
 
-			$current_table_offset = 0;
+			$count = 0;
 
 			// Set query
-			$query = sprintf( "SELECT * FROM `$table_name` %s", $this->get_table_query_clauses( $table_name ) );
+			$query = sprintf( 'SELECT * FROM `%s` %s', $table_name, $this->get_table_query_clauses( $table_name ) );
 
 			// Apply additional table prefix columns
 			$columns = $this->get_table_prefix_columns( $table_name );
@@ -482,7 +545,7 @@ abstract class Ai1wm_Database {
 
 			// Generate insert statements
 			while ( $row = $this->fetch_assoc( $result ) ) {
-				if ( $current_table_offset % Ai1wm_Database::QUERIES_PER_TRANSACTION === 0 ) {
+				if ( $count % Ai1wm_Database::QUERIES_PER_TRANSACTION === 0 ) {
 					// Write start transaction
 					ai1wm_write( $file_handler, "START TRANSACTION;\n" );
 				}
@@ -495,32 +558,32 @@ abstract class Ai1wm_Database {
 					}
 
 					// Replace table values
-					$items[] = is_null( $value ) ? 'NULL' : "'" . $this->replace_table_export_values( $this->escape( $value ) ) . "'";
+					$items[] = is_null( $value ) ? 'NULL' : "'" . $this->escape( $value ) . "'";
 				}
 
 				// Set table values
 				$table_values = implode( ',', $items );
 
 				// Set insert statement
-				$table_insert = "INSERT INTO `$new_table_name` VALUES ($table_values);\n";
+				$table_insert = "INSERT INTO `{$new_table_name}` VALUES ({$table_values});\n";
 
 				// Write insert statement
 				ai1wm_write( $file_handler, $table_insert );
 
-				$current_table_offset++;
+				$count++;
 
 				// Write end of transaction
-				if ( $current_table_offset % Ai1wm_Database::QUERIES_PER_TRANSACTION === 0 ) {
+				if ( $count % Ai1wm_Database::QUERIES_PER_TRANSACTION === 0 ) {
 					ai1wm_write( $file_handler, "COMMIT;\n" );
 				}
 			}
 
 			// Write end of transaction
-			if ( $current_table_offset % Ai1wm_Database::QUERIES_PER_TRANSACTION !== 0 ) {
+			if ( $count % Ai1wm_Database::QUERIES_PER_TRANSACTION !== 0 ) {
 				ai1wm_write( $file_handler, "COMMIT;\n" );
 			}
 
-			$current_table_index += 1;
+			$table_offset++;
 
 			// Close result cursor
 			$this->free_result( $result );
@@ -543,70 +606,85 @@ abstract class Ai1wm_Database {
 	/**
 	 * Import database from a file
 	 *
-	 * @param  string $file_name Name of file
+	 * @param  string $file_name    Name of file
+	 * @param  int    $query_offset Query offset
+	 * @param  int    $timeout      Process timeout
 	 * @return bool
 	 */
-	public function import( $file_name ) {
+	public function import( $file_name, &$query_offset = 0, $timeout = 0 ) {
 		// Set max allowed packet
 		$max_allowed_packet = $this->get_max_allowed_packet();
 
 		// Set file handler
 		$file_handler = ai1wm_open( $file_name, 'r' );
 
-		$passed = 0;
-		$failed = 0;
-		$query  = null;
+		// Start time
+		$start = microtime( true );
 
-		// Read database file line by line
-		while ( ( $line = fgets( $file_handler ) ) !== false ) {
-			$query .= $line;
+		// Flag to hold if all tables have been processed
+		$completed = true;
 
-			// End of query
-			if ( preg_match( '/;\s*$/', $query ) ) {
+		// Set empty query
+		$query = null;
 
-				// Check max allowed packet
-				if ( strlen( $query ) <= $max_allowed_packet ) {
+		// Set file pointer at the query offset
+		if ( fseek( $file_handler, $query_offset ) !== -1 ) {
 
-					// Replace table prefixes
-					$query = $this->replace_table_prefixes( $query );
+			// Start transaction
+			$this->query( 'START TRANSACTION' );
 
-					// Replace table collations
-					$query = $this->replace_table_collations( $query );
+			// Read database file line by line
+			while ( ( $line = fgets( $file_handler ) ) !== false ) {
+				$query .= $line;
 
-					// Replace table values
-					$query = $this->replace_table_import_values( $query );
+				// End of query
+				if ( preg_match( '/;\s*$/S', $query ) ) {
+					$query = trim( $query );
 
-					try {
+					// Check max allowed packet
+					if ( strlen( $query ) <= $max_allowed_packet ) {
+
+						// Replace table prefixes
+						$query = $this->replace_table_prefixes( $query );
+
+						// Replace table collations
+						$query = $this->replace_table_collations( $query );
+
+						// Replace table values
+						$query = $this->replace_table_values( $query );
+
+						// Replace raw values
+						$query = $this->replace_raw_values( $query );
 
 						// Run SQL query
-						$result = $this->query( $query );
-						if ( $result === false ) {
-							throw new Exception( $this->error(), $this->errno() );
-						} else {
-							$passed++;
-						}
+						$this->query( $query );
 
-					} catch ( Exception $e ) {
-						$failed++;
+						// Set query offset
+						$query_offset = ftell( $file_handler );
+
+						// Time elapsed
+						if ( $timeout ) {
+							if ( ! $this->is_atomic_query( $query ) ) {
+								if ( ( microtime( true ) - $start ) > $timeout ) {
+									$completed = false;
+									break;
+								}
+							}
+						}
 					}
 
-				} else {
-					$failed++;
+					$query = null;
 				}
-
-				$query = null;
 			}
+
+			// End transaction
+			$this->query( 'COMMIT' );
 		}
 
 		// Close file handler
 		ai1wm_close( $file_handler );
 
-		// Check failed queries
-		if ( ( ( $failed / $passed ) * 100 ) > 2 ) {
-			return false;
-		}
-
-		return true;
+		return $completed;
 	}
 
 	/**
@@ -616,7 +694,7 @@ abstract class Ai1wm_Database {
 	 */
 	public function flush() {
 		foreach ( $this->get_tables() as $table_name ) {
-			$this->query( "DROP TABLE IF EXISTS `$table_name`" );
+			$this->query( "DROP TABLE IF EXISTS `{$table_name}`" );
 		}
 	}
 
@@ -673,7 +751,7 @@ abstract class Ai1wm_Database {
 	protected function get_collation( $collation_name ) {
 		$collation_result = null;
 
-		$result = $this->query( "SHOW COLLATION LIKE '$collation_name'" );
+		$result = $this->query( "SHOW COLLATION LIKE '{$collation_name}'" );
 		while ( $row = $this->fetch_row( $result ) ) {
 			if ( isset( $row[0] ) ) {
 				$collation_result = $row[0];
@@ -702,9 +780,9 @@ abstract class Ai1wm_Database {
 		// Replace first occurance at a specified position
 		if ( $position !== false ) {
 			for ( $i = 0; $i < count( $search ); $i++ ) {
-				$current = stripos( $input, $search[$i] );
+				$current = stripos( $input, $search[ $i ] );
 				if ( $current === $position ) {
-					$input = substr_replace( $input, $replace[$i], $current, strlen( $search[$i] ) );
+					$input = substr_replace( $input, $replace[ $i ], $current, strlen( $search[ $i ] ) );
 				}
 			}
 
@@ -716,63 +794,43 @@ abstract class Ai1wm_Database {
 	}
 
 	/**
-	 * Replace table export values
+	 * Replace table values
 	 *
 	 * @param  string  $input Table value
 	 * @return string
 	 */
-	protected function replace_table_export_values( $input ) {
-		$this->number_of_replaces = 0;
-
-		// Serialization format
-		$array  = '(a:\d+:{.+?})';
-		$string = '(s:\d+:\\\\?"(.+?)\\\\?";)';
-		$object = '(O:\d+:\\\\?"(.+?)\\\\?":\d+:{.*?})';
-
+	protected function replace_table_values( $input ) {
 		// Replace base64 encoded values (Visual Composer)
 		if ( $this->get_visual_composer() ) {
-			$input = preg_replace_callback( "/(?<=\[vc_raw_html\])(.+?)(?=\[\/vc_raw_html\])/S", array( $this, 'replace_base64_values_callback' ), $input );
+			$input = preg_replace_callback( '/\[vc_raw_html\](.+?)\[\/vc_raw_html\]/S', array( $this, 'replace_base64_values_callback' ), $input );
 		}
 
 		// Replace serialized values
-		$input = preg_replace_callback( "/(?<=\A)($array|$string|$object)(?=\z)/S", array( $this, 'replace_serialized_values_callback' ), $input );
-
-		// Replace values
-		if ( $this->number_of_replaces === 0 ) {
-			$input = Ai1wm_Database_Utility::replace_values( $this->get_old_replace_values(), $this->get_new_replace_values(), $input );
+		foreach ( $this->get_old_replace_values() as $old_value ) {
+			if ( strpos( $input, $old_value ) !== false ) {
+				$input = preg_replace_callback( "/'(.*?)(?<!\\\\)'/S", array( $this, 'replace_table_values_callback' ), $input );
+				break;
+			}
 		}
 
 		return $input;
 	}
 
 	/**
-	 * Replace table import values
+	 * Replace table values (callback)
 	 *
-	 * @param  string  $input Table value
+	 * @param  array  $matches List of matches
 	 * @return string
 	 */
-	protected function replace_table_import_values( $input ) {
-		$this->number_of_replaces = 0;
-
-		// Serialization format
-		$array  = '(a:\d+:{.+?})';
-		$string = '(s:\d+:\\\\?"(.+?)\\\\?";)';
-		$object = '(O:\d+:\\\\?"(.+?)\\\\?":\d+:{.*?})';
-
-		// Replace base64 encoded values (Visual Composer)
-		if ( $this->get_visual_composer() ) {
-			$input = preg_replace_callback( "/(?<=\[vc_raw_html\])(.+?)(?=\[\/vc_raw_html\])/S", array( $this, 'replace_base64_values_callback' ), $input );
-		}
+	protected function replace_table_values_callback( $matches ) {
+		// Unescape MySQL special characters
+		$input = Ai1wm_Database_Utility::unescape_mysql( $matches[1] );
 
 		// Replace serialized values
-		$input = preg_replace_callback( "/(?<=')($array|$string|$object)(?=')/S", array( $this, 'replace_serialized_values_callback' ), $input );
+		$input = Ai1wm_Database_Utility::replace_serialized_values( $this->get_old_replace_values(), $this->get_new_replace_values(), $input );
 
-		// Replace values
-		if ( $this->number_of_replaces === 0 ) {
-			$input = Ai1wm_Database_Utility::replace_values( $this->get_old_replace_values(), $this->get_new_replace_values(), $input );
-		}
-
-		return $input;
+		// Escape MySQL special characters
+		return "'" . Ai1wm_Database_Utility::escape_mysql( $input ) . "'";
 	}
 
 	/**
@@ -782,8 +840,6 @@ abstract class Ai1wm_Database {
 	 * @return string
 	 */
 	protected function replace_base64_values_callback( $matches ) {
-		$this->number_of_replaces++;
-
 		// Decode base64 characters
 		$input = rawurldecode( base64_decode( strip_tags( $matches[1] ) ) );
 
@@ -791,30 +847,7 @@ abstract class Ai1wm_Database {
 		$input = Ai1wm_Database_Utility::replace_values( $this->get_old_replace_values(), $this->get_new_replace_values(), $input );
 
 		// Encode base64 characters
-		$input = base64_encode( rawurlencode( $input ) );
-
-		return $input;
-	}
-
-	/**
-	 * Replace serialized values (callback)
-	 *
-	 * @param  array  $matches List of matches
-	 * @return string
-	 */
-	protected function replace_serialized_values_callback( $matches ) {
-		$this->number_of_replaces++;
-
-		// Unescape MySQL special characters
-		$input = Ai1wm_Database_Utility::unescape_mysql( $matches[1] );
-
-		// Replace serialized values
-		$input = Ai1wm_Database_Utility::replace_serialized_values( $this->get_old_replace_values(), $this->get_new_replace_values(), $input );
-
-		// Escape MySQL special characters
-		$input = Ai1wm_Database_Utility::escape_mysql( $input );
-
-		return $input;
+		return '[vc_raw_html]' . base64_encode( rawurlencode( $input ) ) . '[/vc_raw_html]';
 	}
 
 	/**
@@ -840,7 +873,17 @@ abstract class Ai1wm_Database {
 			}
 		}
 
-		return str_ireplace( $search, $replace, $input );
+		return str_replace( $search, $replace, $input );
+	}
+
+	/**
+	 * Replace raw values
+	 *
+	 * @param  string $input SQL statement
+	 * @return string
+	 */
+	protected function replace_raw_values( $input ) {
+		return Ai1wm_Database_Utility::replace_values( $this->get_old_replace_raw_values(), $this->get_new_replace_raw_values(), $input );
 	}
 
 	/**
@@ -859,6 +902,88 @@ abstract class Ai1wm_Database {
 	}
 
 	/**
+	 * Check whether input is START TRANSACTION query
+	 *
+	 * @param  string $input SQL statement
+	 * @return bool
+	 */
+	protected function is_start_transaction_query( $input ) {
+		return strpos( $input, 'START TRANSACTION' ) === 0;
+	}
+
+	/**
+	 * Check whether input is COMMIT query
+	 *
+	 * @param  string $input SQL statement
+	 * @return bool
+	 */
+	protected function is_commit_query( $input ) {
+		return strpos( $input, 'COMMIT' ) === 0;
+	}
+
+	/**
+	 * Check whether input is DROP TABLE query
+	 *
+	 * @param  string $input SQL statement
+	 * @return bool
+	 */
+	protected function is_drop_table_query( $input ) {
+		return strpos( $input, 'DROP TABLE' ) === 0;
+	}
+
+	/**
+	 * Check whether input is CREATE TABLE query
+	 *
+	 * @param  string $input SQL statement
+	 * @return bool
+	 */
+	protected function is_create_table_query( $input ) {
+		return strpos( $input, 'CREATE TABLE' ) === 0;
+	}
+
+	/**
+	 * Check whether input is INSERT INTO query
+	 *
+	 * @param  string $input SQL statement
+	 * @param  string $table Table name (case insensitive)
+	 * @return bool
+	 */
+	protected function is_insert_into_query( $input, $table ) {
+		return stripos( $input, sprintf( 'INSERT INTO `%s`', $table ) ) === 0;
+	}
+
+	/**
+	 * Check whether input is atomic query
+	 *
+	 * @param  string $input SQL statement
+	 * @return bool
+	 */
+	protected function is_atomic_query( $input ) {
+		$atomic = false;
+
+		// Skip timeout based on table query
+		switch ( true ) {
+			case $this->is_drop_table_query( $input ):
+			case $this->is_create_table_query( $input ):
+			case $this->is_start_transaction_query( $input ):
+			case $this->is_commit_query( $input ):
+				$atomic = true;
+				break;
+
+			default:
+				// Skip timeout based on table query and table name
+				foreach ( $this->get_atomic_tables() as $table_name ) {
+					if ( $this->is_insert_into_query( $input, $table_name ) ) {
+						$atomic = true;
+						break;
+					}
+				}
+		}
+
+		return $atomic;
+	}
+
+	/**
 	 * Replace table options
 	 *
 	 * @param  string $input SQL statement
@@ -867,6 +992,8 @@ abstract class Ai1wm_Database {
 	protected function replace_table_options( $input ) {
 		// Set table replace options
 		$search = array(
+			'TYPE=InnoDB',
+			'TYPE=MyISAM',
 			'ENGINE=Aria',
 			'TRANSACTIONAL=0',
 			'TRANSACTIONAL=1',
@@ -880,6 +1007,8 @@ abstract class Ai1wm_Database {
 
 		);
 		$replace = array(
+			'ENGINE=InnoDB',
+			'ENGINE=MyISAM',
 			'ENGINE=MyISAM',
 			'',
 			'',

@@ -31,7 +31,7 @@ define( 'AI1WM_DEBUG', false );
 // ==================
 // = Plugin Version =
 // ==================
-define( 'AI1WM_VERSION', '6.41' );
+define( 'AI1WM_VERSION', '6.46' );
 
 // ===============
 // = Plugin Name =
@@ -217,6 +217,16 @@ define( 'AI1WM_JETPACK_ACTIVE_MODULES', 'jetpack_active_modules' );
 // = MS Files Rewriting =
 // ======================
 define( 'AI1WM_MS_FILES_REWRITING', 'ms_files_rewriting' );
+
+// ===================
+// = Active Template =
+// ===================
+define( 'AI1WM_ACTIVE_TEMPLATE', 'template' );
+
+// =====================
+// = Active Stylesheet =
+// =====================
+define( 'AI1WM_ACTIVE_STYLESHEET', 'stylesheet' );
 
 // ===============
 // = Updater Key =

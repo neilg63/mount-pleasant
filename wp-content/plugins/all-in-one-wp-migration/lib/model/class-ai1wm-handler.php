@@ -42,4 +42,15 @@ class Ai1wm_Handler {
 			'Line'    => $errline,
 		) );
 	}
+
+	/**
+	 * Shutdown handler
+	 *
+	 * @return void
+	 */
+	public static function shutdown() {
+		if ( ( $error = error_get_last() ) ) {
+			Ai1wm_Log::error( $error );
+		}
+	}
 }

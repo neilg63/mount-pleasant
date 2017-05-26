@@ -3,8 +3,8 @@ Tags: related posts, related, similar posts, posts, custom post types, tags, cat
 Contributors: webberzone, Ajay
 Donate link: http://ajaydsouza.com/donate/
 Stable tag: trunk
-Requires at least: 3.5
-Tested up to: 4.4
+Requires at least: 4.1
+Tested up to: 4.8
 License: GPLv2 or later
 
 Restrict the related posts by Contextual Related Posts to the same category, tag or custom taxonomy
@@ -56,6 +56,13 @@ If your question isn't listed here, please create a new post detailing your prob
 
 == Changelog ==
 
+= 1.3.0 =
+* Enhancements:
+	* When "Match all taxonomy terms" is selected, only taxonomies for the current post type is selected. This reduces the cases where no posts are found. Posts are also now properly ranked by relevancy
+
+* Bug fixes:
+	* Fixed PHP notices
+
 = 1.2.0 =
 * Features:
 	* Option to match by all taxonomies - Contributed by [Enchiridion](https://github.com/Enchiridion)
@@ -75,6 +82,6 @@ If your question isn't listed here, please create a new post detailing your prob
 
 == Upgrade Notice ==
 
-= 1.2.0 =
-* New option to match all taxonomies; bug fixes;
-
+= 1.3.0 =
+* Bug fixes; Optimisation when selecting "Match all taxonomy terms";
+Check Changelog for detailed updates

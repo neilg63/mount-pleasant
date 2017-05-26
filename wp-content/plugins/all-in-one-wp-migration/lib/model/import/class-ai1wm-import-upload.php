@@ -103,6 +103,8 @@ class Ai1wm_Import_Upload {
 					400
 				);
 		}
+
+		echo json_encode( array( 'errors' => array() ) );
 		exit;
 	}
 }

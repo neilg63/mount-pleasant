@@ -25,24 +25,29 @@
 
 class Ai1wm_Report_Controller {
 
-	public static function report() {
+	public static function report( $params = array() ) {
+
+		// Set params
+		if ( empty( $params ) ) {
+			$params = stripslashes_deep( $_POST );
+		}
 
 		// Set E-mail
 		$email = null;
-		if ( isset( $_POST['ai1wm_email'] ) ) {
-			$email = trim( $_POST['ai1wm_email'] );
+		if ( isset( $params['ai1wm_email'] ) ) {
+			$email = trim( $params['ai1wm_email'] );
 		}
 
 		// Set Message
 		$message = null;
-		if ( isset( $_POST['ai1wm_message'] ) ) {
-			$message = trim( $_POST['ai1wm_message'] );
+		if ( isset( $params['ai1wm_message'] ) ) {
+			$message = trim( $params['ai1wm_message'] );
 		}
 
 		// Set Terms
 		$terms = false;
-		if ( isset( $_POST['ai1wm_terms'] ) ) {
-			$terms = (bool) $_POST['ai1wm_terms'];
+		if ( isset( $params['ai1wm_terms'] ) ) {
+			$terms = (bool) $params['ai1wm_terms'];
 		}
 
 		$model = new Ai1wm_Report;

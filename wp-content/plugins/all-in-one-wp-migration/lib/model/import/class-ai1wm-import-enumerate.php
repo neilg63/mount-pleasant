@@ -33,11 +33,11 @@ class Ai1wm_Import_Enumerate {
 		// Open the archive file for reading
 		$archive = new Ai1wm_Extractor( ai1wm_archive_path( $params ) );
 
-		// Get total files
-		$params['total_files'] = $archive->get_total_files();
+		// Get total files count
+		$params['total_files_count'] = $archive->get_total_files_count();
 
-		// Get total size
-		$params['total_size'] = $archive->get_total_size();
+		// Get total files size
+		$params['total_files_size'] = $archive->get_total_files_size();
 
 		// Close the archive file
 		$archive->close();

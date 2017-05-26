@@ -37,10 +37,10 @@ abstract class Ai1wm_Archiver {
 	 * @type string
 	 */
 	protected $block_format = array(
-		'a255', // filename
-		'a14',  // size of file contents
-		'a12',  // last time modified
-		'a4096' // path
+		'a255',  // filename
+		'a14',   // size of file contents
+		'a12',   // last time modified
+		'a4096', // path
 	);
 
 	public function get_block_format() {

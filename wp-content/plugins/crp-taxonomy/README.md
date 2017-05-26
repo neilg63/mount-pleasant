@@ -1,8 +1,14 @@
-﻿# Contextual Related Posts Taxonomy Tools
+﻿[![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/crp-taxonomy.svg?style=flat-square)](https://wordpress.org/plugins/crp-taxonomy/)
+[![License](https://img.shields.io/badge/license-GPL_v2%2B-orange.svg?style=flat-square)](http://opensource.org/licenses/GPL-2.0)
+[![WordPress Tested](https://img.shields.io/wordpress/v/crp-taxonomy.svg?style=flat-square)](https://wordpress.org/plugins/crp-taxonomy/)
+[![Build Status](https://travis-ci.org/WebberZone/crp-taxonomy.svg?branch=master)](https://travis-ci.org/WebberZone/crp-taxonomy)
+[![Code Climate](https://codeclimate.com/github/WebberZone/crp-taxonomy/badges/gpa.svg)](https://codeclimate.com/github/WebberZone/crp-taxonomy)
 
-__Requires:__ 3.0
+# Contextual Related Posts Taxonomy Tools
 
-__Tested up to:__ 4.4
+__Requires:__ 4.1
+
+__Tested up to:__ 4.8
 
 __License:__ [GPL-2.0+](http://www.gnu.org/licenses/gpl-2.0.html)
 
@@ -27,7 +33,7 @@ So, if you've got some cool feature that you'd like to implement into the plugin
 
 
 ## Screenshots
-![General Options](https://raw.github.com/ajaydsouza/crp-taxonomy/master/assets/screenshot-1.png)
+![General Options](https://raw.github.com/ajaydsouza/crp-taxonomy/master/wporg-assets/screenshot-1.png)
 
 _Contextual Related Posts Taxonomy Tools Options_
 

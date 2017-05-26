@@ -270,7 +270,7 @@ require_once AI1WM_IMPORT_PATH .
 
 require_once AI1WM_IMPORT_PATH .
 			DIRECTORY_SEPARATOR .
-			'class-ai1wm-import-plugins.php';
+			'class-ai1wm-import-mu-plugins.php';
 
 require_once AI1WM_IMPORT_PATH .
 			DIRECTORY_SEPARATOR .

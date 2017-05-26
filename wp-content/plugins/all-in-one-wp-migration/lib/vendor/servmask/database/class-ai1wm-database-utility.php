@@ -35,7 +35,11 @@ class Ai1wm_Database_Utility {
 	 * @return mixed        The original string with all elements replaced as needed.
 	 */
 	public static function replace_values( $from = array(), $to = array(), $data = '' ) {
-		return strtr( $data, array_combine( $from, $to ) );
+		if ( ! empty( $from ) && ! empty( $to ) ) {
+			return strtr( $data, array_combine( $from, $to ) );
+		}
+
+		return $data;
 	}
 
 	/**
@@ -58,7 +62,7 @@ class Ai1wm_Database_Utility {
 			} else if ( is_array( $data ) ) {
 				$tmp = array();
 				foreach ( $data as $key => $value ) {
-					$tmp[$key] = self::replace_serialized_values( $from, $to, $value, false );
+					$tmp[ $key ] = self::replace_serialized_values( $from, $to, $value, false );
 				}
 
 				$data = $tmp;
@@ -74,14 +78,15 @@ class Ai1wm_Database_Utility {
 				unset( $tmp );
 			} else {
 				if ( is_string( $data ) ) {
-					$data = strtr( $data, array_combine( $from, $to ) );
+					if ( ! empty( $from ) && ! empty( $to ) ) {
+						$data = strtr( $data, array_combine( $from, $to ) );
+					}
 				}
 			}
 
 			if ( $serialized ) {
 				return serialize( $data );
 			}
-
 		} catch ( Exception $e ) {
 			// pass
 		}
@@ -96,7 +101,7 @@ class Ai1wm_Database_Utility {
 	 * @return string
 	 */
 	public static function escape_mysql( $data ) {
-		return str_ireplace(
+		return str_replace(
 			array( '\\', '\0', "\n", "\r", "\x1a", "'", '"', "\0" ),
 			array( '\\\\', '\\0', "\\n", "\\r", '\Z', "\'", '\"', '\0' ),
 			$data
@@ -110,7 +115,7 @@ class Ai1wm_Database_Utility {
 	 * @return string
 	 */
 	public static function unescape_mysql( $data ) {
-		return str_ireplace(
+		return str_replace(
 			array( '\\\\', '\\0', "\\n", "\\r", '\Z', "\'", '\"', '\0' ),
 			array( '\\', '\0', "\n", "\r", "\x1a", "'", '"', "\0" ),
 			$data
